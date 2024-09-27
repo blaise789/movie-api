@@ -1,10 +1,20 @@
 package com.codewithblaise.movieflix.entities;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import lombok.*;
-
 import java.util.Set;
+
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity(name = "movies")
 @Data
@@ -28,7 +38,7 @@ public class Movie {
     @NotBlank(message = "please provide the movie's poster")
     private String poster;
     @ElementCollection
-    @CollectionTable(name = "movie_cast")
+    @CollectionTable(name = "movie_cast",joinColumns=@JoinColumn(name="movie_id"))
     private Set<String> movieCast;
     @Column(nullable = false,length = 200)
     @NotBlank(message = "please provide the movie's  release Year")

@@ -1,0 +1,38 @@
+[
+  {
+    "movieId": 1,
+    "title": "Inception",
+    "director": "Christopher Nolan",
+    "studio": "Warner Bros.",
+    "poster": "https://example.com/inception.jpg",
+    "movieCast": ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Elliot Page"],
+    "releaseYear": 2010
+  },
+  {
+    "movieId": 2,
+    "title": "The Matrix",
+    "director": "Lana Wachowski, Lilly Wachowski",
+    "studio": "Warner Bros.",
+    "poster": "https://example.com/matrix.jpg",
+    "movieCast": ["Keanu Reeves", "Laurence Fishburne", "Carrie-Anne Moss"],
+    "releaseYear": 1999
+  },
+  {
+    "movieId": 3,
+    "title": "The Dark Knight",
+    "director": "Christopher Nolan",
+    "studio": "Warner Bros.",
+    "poster": "https://example.com/darkknight.jpg",
+    "movieCast": ["Christian Bale", "Heath Ledger", "Aaron Eckhart"],
+    "releaseYear": 2008
+  },
+  {
+    "movieId": 4,
+    "title": "Pulp Fiction",
+    "director": "Quentin Tarantino",
+    "studio": "Miramax",
+    "poster": "https://example.com/pulpfiction.jpg",
+    "movieCast": ["John Travolta", "Uma Thurman", "Samuel L. Jackson"],
+    "releaseYear": 1994
+  }
+]

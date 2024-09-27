@@ -14,4 +14,4 @@ projects:
 server:
   port:  5500
 base:
-  url: http://localhost:5500
+  url: "http://localhost:5500/"

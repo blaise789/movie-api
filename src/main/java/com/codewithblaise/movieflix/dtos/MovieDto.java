@@ -4,13 +4,13 @@ import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Set;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
+@Data
+@Builder
 public class MovieDto {
     @NotBlank(message = "please provide the movie's title")
     private String title;

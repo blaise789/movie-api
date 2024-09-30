@@ -3,6 +3,7 @@ package com.codewithblaise.movieflix.controllers;
 import java.io.IOException;
 import java.util.List;
 
+import com.codewithblaise.movieflix.exceptions.FileEmptyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,9 @@ public class MovieController {
 
     @PostMapping("/add-movie")
     public ResponseEntity<MovieDto> createMovie(@RequestPart MultipartFile file,@RequestPart String movieDto) throws IOException {
+        if(file.isEmpty()){
+            throw  new FileEmptyException("file field is empty");
+        }
     MovieDto dto=convertToMovieDto(movieDto);
     return new ResponseEntity<>(movieService.addMovie(dto,file), HttpStatus.CREATED);
     }

@@ -25,6 +25,7 @@ public class MovieDto {
     private String director;
     @NotBlank(message = "please provide the movie's studio")
     private String studio;
+
     private String poster;
     @ElementCollection
     @CollectionTable(name = "movie_cast")

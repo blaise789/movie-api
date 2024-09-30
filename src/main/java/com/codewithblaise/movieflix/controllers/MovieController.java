@@ -6,12 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.codewithblaise.movieflix.dtos.MovieDto;
@@ -42,6 +37,17 @@ public class MovieController {
     private MovieDto convertToMovieDto(String movieDtoObj) throws JsonProcessingException {
         ObjectMapper objectMapper=new ObjectMapper();
         return objectMapper.readValue(movieDtoObj,MovieDto.class);
+    }
+    @PutMapping("/{movieId}")
+    public ResponseEntity<MovieDto> updateMovie(@PathVariable Long movieId,@RequestPart MultipartFile file,@RequestPart String updateMovieDto) throws IOException {
+        if(file.isEmpty()) file=null;
+        MovieDto movieDto=convertToMovieDto(updateMovieDto);
+        MovieDto updatedMovie=movieService.updateMovie(movieId,file,movieDto);
+        return ResponseEntity.ok(updatedMovie);
+    }
+    @DeleteMapping("/{movieId}")
+    public ResponseEntity<String> deleteMovie(@PathVariable Long movieId) throws IOException {
+        return ResponseEntity.ok(movieService.deleteMovie(movieId));
     }
 }
 

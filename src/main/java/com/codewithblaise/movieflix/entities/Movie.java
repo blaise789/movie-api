@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer movieId;
+    private Long movieId;
     @Column(nullable = false,length = 200)
     @NotBlank(message = "please provide the movie's title")
     private String title;
@@ -41,7 +41,6 @@ public class Movie {
     @CollectionTable(name = "movie_cast",joinColumns=@JoinColumn(name="movie_id"))
     private Set<String> movieCast;
     @Column(nullable = false,length = 200)
-    @NotBlank(message = "please provide the movie's  release Year")
     private Integer releaseYear;
 
 

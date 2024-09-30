@@ -36,8 +36,8 @@ public class MovieController {
 
     }
     @GetMapping()
-    public List<MovieDto>  getAllMovies(){
-        return null;
+    public ResponseEntity<List<MovieDto>>  getAllMovies(){
+        return ResponseEntity.ok(movieService.getAllMovies());
     }
     private MovieDto convertToMovieDto(String movieDtoObj) throws JsonProcessingException {
         ObjectMapper objectMapper=new ObjectMapper();

@@ -2,9 +2,12 @@ package com.codewithblaise.movieflix.dtos;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.ElementCollection;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,8 +29,10 @@ public class MovieDto {
     @ElementCollection
     @CollectionTable(name = "movie_cast")
     private Set<String> movieCast;
-    @NotBlank(message = "please provide the movie's  release Year")
+    @NotNull(message = "please provide the movie's  release Year")
+    @Min(message = "minimum  year should be atleast 2010",value = 2000)
     private Integer releaseYear;
+
     private String posterUrl;
 
 

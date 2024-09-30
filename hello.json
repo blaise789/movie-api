@@ -1,13 +1,13 @@
 [
-  {
-    "movieId": 1,
-    "title": "Inception",
-    "director": "Christopher Nolan",
-    "studio": "Warner Bros.",
-    "poster": "https://example.com/inception.jpg",
-    "movieCast": ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Elliot Page"],
-    "releaseYear": 2010
-  },
+    {
+      "movieId": 1,
+      "title": "Inception",
+      "director": "Christopher Nolan",
+      "studio": "Warner Bros.",
+      "poster": "https://example.com/inception.jpg",
+      "movieCast": ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Elliot Page"],
+      "releaseYear": 2010
+    },
   {
     "movieId": 2,
     "title": "The Matrix",

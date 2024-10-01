@@ -3,7 +3,9 @@ package com.codewithblaise.movieflix.controllers;
 import java.io.IOException;
 import java.util.List;
 
+import com.codewithblaise.movieflix.entities.MoviePageResponse;
 import com.codewithblaise.movieflix.exceptions.FileEmptyException;
+import com.codewithblaise.movieflix.utils.AppConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -53,5 +55,15 @@ public class MovieController {
     public ResponseEntity<String> deleteMovie(@PathVariable Long movieId) throws IOException {
         return ResponseEntity.ok(movieService.deleteMovie(movieId));
     }
+//    with pagination
+    @GetMapping("/moviesPage")
+    public ResponseEntity<MoviePageResponse> getMoviesWithPagination(@RequestParam(defaultValue = AppConstants.PAGE_NUMBER,required = false) Integer pageNumber, @RequestParam(defaultValue = AppConstants.PAGE_SIZE ,required = false) Integer pageSize){
+        return ResponseEntity.ok(movieService.getAllMoviesByPagination(pageNumber,pageSize));
+    }
+    @GetMapping("/moviesPageSorted")
+    public ResponseEntity<MoviePageResponse> getMoviesWithPaginationAndSorting(@RequestParam(defaultValue = AppConstants.PAGE_NUMBER,required = false)Integer pageNumber,@RequestParam(defaultValue = AppConstants.PAGE_SIZE,required = false) Integer pageSize,@RequestParam(defaultValue = AppConstants.SORT_BY)String sortBy,@RequestParam(defaultValue = AppConstants.SORT_DIR) String dir){
+        return ResponseEntity.ok(movieService.getAllMoviesByPaginationAndSorting(pageNumber,pageSize,sortBy,dir));
+    }
+
 }
 

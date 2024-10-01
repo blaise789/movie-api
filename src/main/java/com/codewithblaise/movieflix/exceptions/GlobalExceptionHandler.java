@@ -15,5 +15,9 @@ public class GlobalExceptionHandler {
     public ProblemDetail emptyFileExcHandler(FileEmptyException exc){
         return ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST,exc.getMessage());
     }
+    @ExceptionHandler(FileExistException.class)
+    public ProblemDetail emptyFileExcHandler(FileExistException exception){
+        return ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST,exception.getMessage());
+    }
 
 }

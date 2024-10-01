@@ -1,0 +1,9 @@
+implementing securit of our application
+->JWT dependence->pom.xml
+->user model ->with 'refreshToken
+->user repo
+->refreshToken->model
+->ApplicationConfig->for beans of important interfaces/classes
+->JwtService
+->RefreshTokenService
+->AuthFilterService

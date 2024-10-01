@@ -1,5 +1,6 @@
 package com.codewithblaise.movieflix.auth.service;
 
+import jakarta.annotation.Nonnull;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,7 +22,7 @@ public class AuthFilterService  extends OncePerRequestFilter {
     private final UserDetailsService userDetailsService;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(@Nonnull  HttpServletRequest request, @Nonnull HttpServletResponse response, @Nonnull  FilterChain filterChain) throws ServletException, IOException {
 final String authHeader=request.getHeader("Authorization");
 String username,jwt;
 if(authHeader==null || !authHeader.startsWith("Bearer ")){

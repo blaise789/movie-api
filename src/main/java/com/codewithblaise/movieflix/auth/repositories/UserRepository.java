@@ -2,10 +2,9 @@ package com.codewithblaise.movieflix.auth.repositories;
 
 import com.codewithblaise.movieflix.auth.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User,Integer> {
-    Optional<User> findByUsername();
+    Optional<User> findByEmail(String email);
 }

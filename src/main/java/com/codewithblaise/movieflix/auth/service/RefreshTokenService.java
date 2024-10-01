@@ -14,8 +14,8 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 public class RefreshTokenService {
-    private UserRepository userRepository;
-    private RefreshTokenRepository tokenRepository;
+    private final UserRepository userRepository;
+    private  final RefreshTokenRepository tokenRepository;
 
     public RefreshToken createRefreshToken(String username){
         User user=userRepository.findByEmail(username).orElseThrow(()->new UsernameNotFoundException("user not found with email"+username));

@@ -16,7 +16,7 @@ import java.util.function.Function;
 
 @Service
 public class JwtService {
-    private final String SECRET_KEY="QkxBSVNFUkNBMjAyMg==";
+    private final String SECRET_KEY="SGV5IGZlbGxhcyBJIGFtIGdvaW5nIHRvIHRlYWNoIHlvdSBuZXcgdGhpbmdzIGFib3VwdCBwcm9ncmFtbWluZyB3aGljaCA=";
     public String extractUsername(String token){
         return extractClaim(token, Claims::getSubject);
     }
@@ -43,7 +43,7 @@ return claimsResolver.apply(claims);
     }
 
     public String generateToken(Map<String,Object> extraClaims, UserDetails userDetails){
-     return Jwts.builder().setClaims(extraClaims).setSubject(userDetails.getUsername()).setIssuedAt(new Date(System.currentTimeMillis())).setExpiration(new Date(System.currentTimeMillis()+25*1000)).signWith(getSignInKey(), SignatureAlgorithm.HS256).compact();
+     return Jwts.builder().setClaims(extraClaims).setSubject(userDetails.getUsername()).setIssuedAt(new Date(System.currentTimeMillis())).setExpiration(new Date(System.currentTimeMillis()+25*1000)).signWith(getSignInKey(),SignatureAlgorithm.HS256).compact();
     }
 //    if token  is valid by checking if token is expired for current user
     public boolean isTokenValid(String token,UserDetails userDetails){

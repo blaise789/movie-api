@@ -9,6 +9,7 @@ import com.codewithblaise.movieflix.auth.utils.RegisterRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -38,14 +39,16 @@ public class AuthService {
 
      }
      public AuthResponse loginUser(LoginRequest request){
-         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                 request.getPassword(),
-                 request.getEmail()
+      Authentication authentication= authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+                request.getEmail(),
+                 request.getPassword()
          ));
-        User user=userRepository.findByEmail(request.getEmail()).orElseThrow(()->new UsernameNotFoundException("user not found with email"+request.getEmail()));
 
+         System.out.println("hello");
+        User user=userRepository.findByEmail(request.getEmail()).orElseThrow(()->new UsernameNotFoundException("user not found with email"+request.getEmail()));
+         System.out.println(user);
         var accessToken=jwtService.generateToken(user);
-        var refreshToken=refreshTokenService.createRefreshToken(user.getEmail());
+        var refreshToken=refreshTokenService.createRefreshToken(request.getEmail());
         return new AuthResponse(accessToken,refreshToken.getRefreshToken());
      }
 

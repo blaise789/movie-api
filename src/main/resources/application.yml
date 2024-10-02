@@ -9,6 +9,24 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: "bigirabagaboblaise@gmail.com"
+    password: "jpxu kjyd bfnr jcjk"
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 projects:
     poster: poster
 server:

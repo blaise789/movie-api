@@ -24,5 +24,9 @@ public class GlobalExceptionHandler {
     public ProblemDetail UserNotFoundHandler(UsernameNotFoundException exc){
         return ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND,exc.getMessage());
     }
+    @ExceptionHandler(InvalidOtp.class)
+    public ProblemDetail InvOtpHandler(InvalidOtp exc){
+        return ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST,exc.getMessage());
+    }
 
 }
